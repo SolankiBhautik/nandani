@@ -3,15 +3,17 @@ import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-image.jpg";
 import { ArrowRight } from "lucide-react";
 import { BackgroundBeams } from "./ui/shadcn-io/background-beams";
+import logo from "@/assets/nav_logo.png"
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center  pt-40">
+    <section className="relative min-h-screen flex items-center justify-center pt-28">
       <div className="absolute inset-0 bg-gradient-to-br from-secondary via-background to-background" />
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="space-y-4">
+              <img src={logo} className="md:hidden mb-8" />
               <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
                 Launch Your{" "}
                 <span className="text-primary">Career</span> in the US

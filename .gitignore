@@ -59,7 +59,6 @@ out/
 
 # Gatsby (if using)
 .cache/
-public/
 
 # Temporary files
 *.tmp

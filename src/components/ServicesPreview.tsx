@@ -1,53 +1,33 @@
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
 import { servicesList } from "@/lib/servicesData";
+import { StickyServiceCard } from "./StickyServiceCard";
 
 const ServicesPreview = () => {
   return (
-    <section className="py-20">
+    <section className="py-16 sm:py-24">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <p className="text-primary font-semibold mb-2">Services We Offer</p>
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            Comprehensive Career <span className="text-primary">Solutions</span>
+        <header className="mb-10 text-center">
+          <p className="mb-2 font-semibold text-primary">Services We Offer</p>
+          <h2 className="text-balance text-3xl font-bold sm:text-4xl">
+            Comprehensive Career Solutions
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            From resume building to post-hire support, we provide end-to-end
-            services to ensure your career success in the United States.
+          <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
+            End-to-end support from resumes to relocation—stacked vertically
+            with a sticky progression for immersive browsing.
           </p>
-        </div>
+        </header>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {servicesList.map((service, index) => (
-            <Link
-              key={index}
-              to={`/services/${service.id}`}
-              className="group bg-card rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border hover:border-primary/50"
-            >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
-                <service.icon size={28} />
-              </div>
-              <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-              <p className="text-muted-foreground mb-4">
-                {service.description}
-              </p>
-              <div className="flex items-center text-primary font-semibold group-hover:translate-x-2 transition-transform">
-                Learn more <ArrowRight className="ml-2 h-4 w-4" />
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        <div className="text-center">
-          <Button
-            size="lg"
-            variant="outline"
-            className="rounded-full text-lg px-8"
-            asChild
-          >
-            <Link to="/services">View All Services</Link>
-          </Button>
+        <div className="relative flex flex-col gap-6">
+          {servicesList.map((service, index) => {
+            const topOffsetPx = 88 + index * 10;
+            return (
+              <StickyServiceCard
+                key={service.id}
+                service={service}
+                index={index}
+                topOffsetPx={topOffsetPx}
+              />
+            );
+          })}
         </div>
       </div>
     </section>
