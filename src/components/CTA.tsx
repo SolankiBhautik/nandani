@@ -7,9 +7,9 @@ const CTA = () => {
     <section className="py-20 bg-secondary">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
-          <div className="bg-gradient-to-br from-primary to-primary/80 rounded-3xl overflow-hidden shadow-2xl">
-            <div className="grid lg:grid-cols-2 gap-8 items-center p-12">
-              <div className="space-y-6 text-white">
+          <div className="">
+            <div className="grid lg:grid-cols-12 gap-4 lg:gap-0 items-center">
+              <div className="space-y-6 p-8 lg:pr-20 lg:col-span-8 text-white bg-gradient-to-br from-primary to-primary/80 rounded-3xl overflow-hidden shadow-2xl">
                 <h2 className="text-3xl lg:text-4xl font-bold">
                   Ready to Start Your Career Journey?
                 </h2>
@@ -40,8 +40,8 @@ const CTA = () => {
                 </div>
               </div>
 
-              <div className="relative">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+              <div className="relative lg:col-span-4 lg:-translate-x-20 bg-foreground px-8 py-4 rounded-3xl outline-4 outline-secondary outline">
+                <div className="backdrop-blur-sm rounded-2xl">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
                       <Users className="h-8 w-8 text-white" />
