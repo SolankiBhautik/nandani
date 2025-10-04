@@ -40,43 +40,47 @@ const ServiceDetail = () => {
 
           <div className="mx-auto">
             <div className="flex items-center gap-6 mb-8">
-              <div className="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+              <div className="flex-shrink-0 w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
                 <ServiceIcon size={40} />
               </div>
               <div>
-                <h1 className="text-4xl lg:text-5xl font-bold mb-2">
+                <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2">
                   {service.title}
                 </h1>
-                <p className="text-xl text-muted-foreground">
+                <p className="tex-lg md:text-xl text-muted-foreground">
                   {service.description}
                 </p>
               </div>
             </div>
 
-            <div className="bg-card rounded-3xl p-8 shadow-sm border mb-8">
-              <h2 className="text-2xl font-bold mb-4">Overview</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+            <div className="bg-card rounded-lg md:rounded-3xl p-4 md:p-8 shadow-sm border mb-8">
+              <h2 className="text-lg md:text-2xl font-bold mb-4">Overview</h2>
+              <p className="md:text-lg text-muted-foreground leading-relaxed">
                 {service.fullDescription}
               </p>
             </div>
 
-            <div className="bg-card rounded-3xl p-8 shadow-sm border mb-8">
-              <h2 className="text-2xl font-bold mb-6">What You Get</h2>
+            <div className="bg-card rounded-lg md:rounded-3xl p-4 md:p-8 shadow-sm border mb-8">
+              <h2 className="text-lg md:text-2xl font-bold mb-6">
+                What You Get
+              </h2>
               <ul className="grid md:grid-cols-2 gap-4">
                 {service.benefits.map((benefit, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <Check className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                    <Check className="text-sm md:text-base h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
                     <span>{benefit}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="bg-card rounded-3xl p-8 shadow-sm border mb-8">
-              <h2 className="text-2xl font-bold mb-6">Our Process</h2>
+            <div className="bg-card rounded-lg md:rounded-3xl p-4 md:p-8 shadow-sm border mb-8">
+              <h2 className="text-lg md:text-2xl font-bold mb-6">
+                Our Process
+              </h2>
               <ol className="space-y-4">
                 {service.process.map((step, index) => (
-                  <li key={index} className="flex gap-4">
+                  <li key={index} className="flex gap-4 text-sm md:text-base">
                     <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold flex-shrink-0">
                       {index + 1}
                     </div>
@@ -86,13 +90,13 @@ const ServiceDetail = () => {
               </ol>
             </div>
 
-            <div className="bg-primary/5 rounded-3xl p-8 border-2 border-primary/20">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div className="bg-primary/5 rounded-lg md:rounded-3xl p-4 md:p-8 border-2 border-primary/20">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-6">
                 <div>
-                  <h3 className="text-2xl font-bold mb-2">
+                  <h3 className="text-lg md:text-2xl font-bold mb-2">
                     Ready to Get Started?
                   </h3>
-                  <p className="text-lg text-muted-foreground">
+                  <p className="md:text-lg text-muted-foreground">
                     {service.pricing}
                   </p>
                 </div>

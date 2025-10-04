@@ -95,23 +95,29 @@ export function StickyServiceCard({
       transition={{ duration: 0.5, delay: index * 0.05 }}
     >
       <Card className="relative overflow-hidden border hover:border-primary transition-all bg-card text-card-foreground group">
-        <Link to={`/services/${service.id}`} className="p-6 sm:p-8 block">
+        <Link to={`/services/${service.id}`} className="p-4 sm:p-8 block">
           <div className="mb-5 flex items-center gap-3">
             <div className="flex size-12 items-center justify-center rounded-xl bg-foreground/5 group-hover:bg-primary/10 text-foreground/50 group-hover:text-primary transition-all">
               <Icon className="size-6" />
             </div>
             <div>
-              <h3 className="text-xl font-semibold">{service.title}</h3>
-              <p className="text-sm text-muted-foreground">{service.pricing}</p>
+              <h3 className="text-lg md:text-xl font-semibold">
+                {service.title}
+              </h3>
+              <p className="text-xs md:text-sm text-muted-foreground">
+                {service.pricing}
+              </p>
             </div>
           </div>
 
-          <p className="mb-4 text-pretty text-muted-foreground text-lg">
+          <p className="mb-4 text-pretty text-muted-foreground text-sm md:text-lg">
             {service.description}
           </p>
-          <p className="mb-6 text-pretty text-lg">{service.fullDescription}</p>
+          <p className="mb-4 md:mb-6 text-pretty text-sm md:text-lg hidden md:block">
+            {service.fullDescription}
+          </p>
 
-          <div className="mb-6 flex flex-wrap gap-2">
+          <div className="mb-6 hidden md:flex flex-wrap gap-2">
             {service.features.slice(0, 4).map((f) => (
               <Badge key={f} variant="secondary" className="rounded-full">
                 {f}
@@ -121,16 +127,16 @@ export function StickyServiceCard({
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <p className="mb-2 text-sm font-medium text-muted-foreground">
+              <p className="mb-2 text-xs md:text-sm font-medium text-muted-foreground">
                 Benefits
               </p>
-              <ul className="list-inside list-disc space-y-1">
+              <ul className="list-inside list-disc space-y-1 text-sm md:text-base">
                 {service.benefits.slice(0, 4).map((b) => (
                   <li key={b}>{b}</li>
                 ))}
               </ul>
             </div>
-            <div>
+            <div className="hidden md:block">
               <p className="mb-2 text-sm font-medium text-muted-foreground">
                 Process
               </p>
