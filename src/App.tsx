@@ -21,7 +21,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/service/:serviceId" element={<ServiceDetail />} />
+          <Route path="/services/:serviceId" element={<ServiceDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           {/* catch-all */}
@@ -29,7 +29,7 @@ const App = () => (
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
-  </QueryClientProvider >
+  </QueryClientProvider>
 );
 
 export default App;

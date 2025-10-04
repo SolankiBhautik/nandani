@@ -1,40 +1,34 @@
-import { Link, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import navLogo from "@/assets/nav_logo.png"
+import navLogo from "@/assets/nav_logo.png";
 
 const Navbar = () => {
-  const location = useLocation();
-
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Services", path: "/services" },
+  { name: "Services", path: "/services" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
   ];
 
-  const isActive = (path: string) => location.pathname === path;
+  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `text-sm md:text-lg font-semibold transition-colors ${
+      isActive ? "text-primary font-medium" : "text-black hover:text-primary"
+    }`;
 
   return (
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 md:w-[95%] max-w-6xl">
       <div className="bg-white/40 backdrop-blur-xl rounded-full px-4 py-3 shadow-lg border-white border-4 w-fit md:w-auto mx-auto">
         <div className="flex items-center justify-center w-fit md:w-auto md:justify-between">
-          <Link to="/" className="hidden md:block text-xl font-bold text-black">
+          <NavLink to="/" className="hidden md:block text-xl font-bold text-black">
             <img src={navLogo} className="h-10" />
-          </Link>
+          </NavLink>
 
           {/* Desktop Navigation */}
           <div className="flex items-center gap-4 md:gap-8">
             {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`text-sm md:text-lg font-semibold transition-colors ${isActive(link.path)
-                  ? "text-primary font-medium"
-                  : "text-black hover:text-primary"
-                  }`}
-              >
+              <NavLink key={link.path} to={link.path} className={getLinkClass}>
                 {link.name}
-              </Link>
+              </NavLink>
             ))}
           </div>
 
@@ -43,7 +37,7 @@ const Navbar = () => {
             className="hidden md:inline-flex rounded-full bg-primary hover:bg-primary/90"
             asChild
           >
-            <Link to="/contact">Get Started</Link>
+            <NavLink to="/contact">Get Started</NavLink>
           </Button>
         </div>
       </div>

@@ -78,7 +78,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto bg-card rounded-3xl p-8 lg:p-12 shadow-sm border">
+          <div className=" mx-auto bg-card rounded-3xl p-8 lg:p-12 shadow-sm border">
             <h2 className="text-3xl font-bold mb-6">Our Story</h2>
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -112,7 +112,7 @@ const About = () => {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8  mx-auto">
               {values.map((value, index) => (
                 <div key={index} className="bg-card rounded-2xl p-6 shadow-sm">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-4">
@@ -135,7 +135,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8  mx-auto">
             {team.map((member, index) => (
               <div key={index} className="bg-card rounded-3xl p-8 shadow-sm hover:shadow-lg transition-shadow border">
                 <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center text-4xl mb-4 mx-auto">

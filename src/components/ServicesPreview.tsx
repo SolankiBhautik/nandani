@@ -1,39 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { FileEdit, MessageSquare, Search, DollarSign, Plane, HeartHandshake, ArrowRight } from "lucide-react";
-
-const services = [
-  {
-    icon: FileEdit,
-    title: "Resume Building",
-    description: "Professional resume and cover letter writing optimized for US employers and ATS systems.",
-  },
-  {
-    icon: MessageSquare,
-    title: "Interview Training",
-    description: "Mock interviews, behavioral question prep, and communication skills coaching.",
-  },
-  {
-    icon: Search,
-    title: "Job Search Support",
-    description: "Strategic job search guidance, company research, and application tracking.",
-  },
-  {
-    icon: DollarSign,
-    title: "Salary Negotiation",
-    description: "Expert advice on compensation packages, benefits, and negotiation strategies.",
-  },
-  {
-    icon: Plane,
-    title: "Visa Support",
-    description: "Guidance on work visa requirements, sponsorship, and immigration processes.",
-  },
-  {
-    icon: HeartHandshake,
-    title: "Post-Hire Support",
-    description: "Ongoing career coaching and workplace integration support after placement.",
-  },
-];
+import { ArrowRight } from "lucide-react";
+import { servicesList } from "@/lib/servicesData";
 
 const ServicesPreview = () => {
   return (
@@ -45,22 +13,25 @@ const ServicesPreview = () => {
             Comprehensive Career <span className="text-primary">Solutions</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            From resume building to post-hire support, we provide end-to-end services to ensure your career success in the United States.
+            From resume building to post-hire support, we provide end-to-end
+            services to ensure your career success in the United States.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {services.map((service, index) => (
+          {servicesList.map((service, index) => (
             <Link
               key={index}
-              to="/services"
+              to={`/services/${service.id}`}
               className="group bg-card rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border hover:border-primary/50"
             >
               <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
                 <service.icon size={28} />
               </div>
               <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-              <p className="text-muted-foreground mb-4">{service.description}</p>
+              <p className="text-muted-foreground mb-4">
+                {service.description}
+              </p>
               <div className="flex items-center text-primary font-semibold group-hover:translate-x-2 transition-transform">
                 Learn more <ArrowRight className="ml-2 h-4 w-4" />
               </div>

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone } from "lucide-react";
+import { servicesList } from "@/lib/servicesData";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,7 +12,8 @@ const Footer = () => {
           <div className="col-span-2 md:col-span-1">
             <h3 className="text-2xl font-bold text-primary mb-4">Nandani</h3>
             <p className="text-gray-300 text-sm">
-              Empowering international students and professionals to achieve their career dreams in the United States.
+              Empowering international students and professionals to achieve
+              their career dreams in the United States.
             </p>
           </div>
 
@@ -19,22 +21,34 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/" className="text-gray-300 hover:text-primary transition-colors">
+                <Link
+                  to="/"
+                  className="text-gray-300 hover:text-primary transition-colors"
+                >
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-gray-300 hover:text-primary transition-colors">
+                <Link
+                  to="/services"
+                  className="text-gray-300 hover:text-primary transition-colors"
+                >
                   Services
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-gray-300 hover:text-primary transition-colors">
+                <Link
+                  to="/about"
+                  className="text-gray-300 hover:text-primary transition-colors"
+                >
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-primary transition-colors">
+                <Link
+                  to="/contact"
+                  className="text-gray-300 hover:text-primary transition-colors"
+                >
                   Contact
                 </Link>
               </li>
@@ -43,13 +57,17 @@ const Footer = () => {
 
           <div>
             <h4 className="font-semibold mb-4">Services</h4>
-            <ul className="space-y-2 text-sm text-gray-300">
-              <li>Resume Building</li>
-              <li>Interview Training</li>
-              <li>Job Search Support</li>
-              <li>Salary Negotiation</li>
-              <li>Visa Support</li>
-              <li>Post-Hire Support</li>
+            <ul className="space-y-2 text-sm">
+              {servicesList.map((s) => (
+                <li key={s.id}>
+                  <Link
+                    to={`/services/${s.id}`}
+                    className="text-gray-300 hover:text-primary transition-colors"
+                  >
+                    {s.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -58,13 +76,19 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center justify-center md:justify-start gap-2 text-gray-300">
                 <Mail className="h-4 w-4 text-primary" />
-                <a href="mailto:info@nandani.com" className="hover:text-primary transition-colors">
+                <a
+                  href="mailto:info@nandani.com"
+                  className="hover:text-primary transition-colors"
+                >
                   info@nandani.com
                 </a>
               </li>
               <li className="flex items-center justify-center md:justify-start gap-2 text-gray-300">
                 <Phone className="h-4 w-4 text-primary" />
-                <a href="tel:+15551234567" className="hover:text-primary transition-colors">
+                <a
+                  href="tel:+15551234567"
+                  className="hover:text-primary transition-colors"
+                >
                   +1 (555) 123-4567
                 </a>
               </li>
