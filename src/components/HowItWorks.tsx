@@ -46,10 +46,21 @@ const HowItWorks = () => {
               key={index}
               className="relative bg-card rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow"
             >
-              <div className="absolute -top-4 left-8 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg">
+
+              <div
+                className="absolute z-20 top-0 left-[15px] inverted-corner bg-black [--size:9px] rotate-90"
+              >
+                <div className="bg-secondary size-2 -translate-y-full" /></div>
+
+              <div
+                className="absolute z-20 top-0 left-[88px] inverted-corner bg-black [--size:9px]"
+              >
+                <div className="bg-secondary size-2  -translate-x-full" /></div>
+
+              <div className="absolute -top-4 left-8 w-12 h-12 rounded-full outline outline-8 outline-secondary bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg">
                 {step.number}
               </div>
-              
+
               <div className="mt-4 mb-6">
                 <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
                   <step.icon size={32} />
@@ -62,7 +73,7 @@ const HowItWorks = () => {
           ))}
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 

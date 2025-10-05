@@ -153,7 +153,7 @@ export function StickyServiceCard({
             </div>
           </div>
 
-          <div className="mt-6 flex items-center justify-between underline-offset-4 hover:underline  group-hover:text-primary">
+          <div className="mt-6 flex items-center justify-between underline-offset-4 hover:underline  group-hover:text-primary transition-all">
             <Link
               to={`/services/${service.id}`}
               className=" flex gap-1 justify-center items-center"

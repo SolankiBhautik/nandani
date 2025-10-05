@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import ServiceDetail from "./pages/ServiceDetail";
 import Services from "./pages/Services";
 import { Analytics } from '@vercel/analytics/react';
+import "@/App.css"
 
 const queryClient = new QueryClient();
 
