@@ -11,6 +11,7 @@ import ServiceDetail from "./pages/ServiceDetail";
 import Services from "./pages/Services";
 import { Analytics } from '@vercel/analytics/react';
 import "@/App.css"
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
       <Sonner />
       <Analytics />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/services" element={<Services />} />

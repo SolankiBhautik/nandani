@@ -1,209 +1,425 @@
-import { useState } from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MessageCircle } from "lucide-react";
-import { z } from "zod";
+import { useState } from "react"
+import { useForm, ValidationError } from "@formspree/react"
+import Navbar from "@/components/Navbar"
+import Footer from "@/components/Footer"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Mail, Phone, MessageCircle, Check, ChevronsUpDown, Globe } from "lucide-react"
+import { motion } from "framer-motion"
+import { cn } from "@/lib/utils"
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 
-const contactSchema = z.object({
-  name: z.string().trim().nonempty({ message: "Name is required" }).max(100),
-  email: z.string().trim().email({ message: "Invalid email address" }).max(255),
-  phone: z.string().trim().max(20).optional(),
-  message: z.string().trim().nonempty({ message: "Message is required" }).max(1000),
-});
+// Popular countries list
+const countries = [
+  { value: "us", label: "United States" },
+  { value: "gb", label: "United Kingdom" },
+  { value: "ca", label: "Canada" },
+  { value: "au", label: "Australia" },
+  { value: "in", label: "India" },
+  { value: "de", label: "Germany" },
+  { value: "fr", label: "France" },
+  { value: "jp", label: "Japan" },
+  { value: "cn", label: "China" },
+  { value: "br", label: "Brazil" },
+  { value: "mx", label: "Mexico" },
+  { value: "es", label: "Spain" },
+  { value: "it", label: "Italy" },
+  { value: "nl", label: "Netherlands" },
+  { value: "se", label: "Sweden" },
+  { value: "sg", label: "Singapore" },
+  { value: "ae", label: "United Arab Emirates" },
+  { value: "nz", label: "New Zealand" },
+  { value: "za", label: "South Africa" },
+  { value: "other", label: "Other" },
+]
 
 const Contact = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [state, handleSubmit] = useForm("xrbyllkz")
+  const [open, setOpen] = useState(false)
+  const [country, setCountry] = useState("")
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    try {
-      contactSchema.parse(formData);
-      setErrors({});
-      
-      const whatsappMessage = encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone || 'Not provided'}\n\nMessage: ${formData.message}`
-      );
-      window.open(`https://wa.me/15551234567?text=${whatsappMessage}`, '_blank');
-      
-      toast({
-        title: "Message sent!",
-        description: "We'll get back to you as soon as possible.",
-      });
-      
-      setFormData({ name: "", email: "", phone: "", message: "" });
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        const fieldErrors: Record<string, string> = {};
-        error.errors.forEach((err) => {
-          if (err.path[0]) {
-            fieldErrors[err.path[0].toString()] = err.message;
-          }
-        });
-        setErrors(fieldErrors);
-      }
-    }
-  };
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.1,
+      },
+    },
+  } as const
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  } as const
+
+  if (state.succeeded) {
+    return (
+      <div className="min-h-screen">
+        <Navbar />
+
+        {/* Background Pattern */}
+        <div className="fixed inset-0 -z-10">
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: `
+                linear-gradient(45deg, currentColor 1px, transparent 1px),
+                linear-gradient(-45deg, currentColor 1px, transparent 1px)
+              `,
+              backgroundSize: "28px 28px",
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-background/90" />
+        </div>
+
+        <main className="pt-32 pb-20">
+          <div className="container px-4 md:px-6">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="max-w-2xl mx-auto text-center"
+            >
+              <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                <Check className="w-10 h-10 text-primary" />
+              </div>
+              <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">Thank You!</h1>
+              <p className="text-base md:text-xl text-muted-foreground mb-6 md:mb-8">
+                Your message has been sent successfully. We'll get back to you as soon as possible.
+              </p>
+              <Button size="lg" className="rounded-full" asChild>
+                <a href="/">Back to Home</a>
+              </Button>
+            </motion.div>
+          </div>
+        </main>
+
+        <Footer />
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen">
       <Navbar />
-      
-      <main className="pt-32 pb-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h1 className="text-5xl lg:text-6xl font-bold mb-6">
-              Get In <span className="text-primary">Touch</span>
-            </h1>
-            <p className="text-xl text-muted-foreground">
-              Ready to take the next step in your career? We're here to help.
-            </p>
-          </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+      <div className="fixed inset-0 -z-10 overflow-hidden">
+        {/* Angled Grid Pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `
+              linear-gradient(45deg, currentColor 1px, transparent 1px),
+              linear-gradient(-45deg, currentColor 1px, transparent 1px)
+            `,
+            backgroundSize: "28px 28px",
+          }}
+        />
+
+        {/* Abstract Decorative Shapes */}
+        <div className="absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-10 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/4 w-48 h-48 bg-primary/3 rotate-45 blur-2xl" />
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-background/90" />
+      </div>
+
+      <main className="pt-24 md:pt-32 pb-12 md:pb-20">
+        <div className="container px-4 md:px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={containerVariants}
+            className="max-w-3xl mx-auto text-center mb-8 md:mb-16"
+          >
+            <motion.h1 variants={itemVariants} className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6">
+              Get In <span className="text-primary">Touch</span>
+            </motion.h1>
+            <motion.p variants={itemVariants} className="text-base md:text-xl text-muted-foreground">
+              Ready to take the next step in your career? We're here to help.
+            </motion.p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
             {/* Contact Form */}
-            <div className="bg-card rounded-3xl p-8 shadow-sm border">
-              <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              variants={itemVariants}
+              className="bg-card/40 backdrop-blur-[2px] rounded-md md:rounded-3xl p-6 md:p-8 shadow-sm border relative overflow-hidden"
+            >
+              <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl" />
+
+              <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 relative">Send Us a Message</h2>
+
+              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6 relative">
+                {/* Name Field */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 }}
+                >
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
                     Name *
                   </label>
                   <Input
                     id="name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="rounded-xl"
+                    name="name"
+                    required
+                    className="rounded-xl h-11 md:h-12 bg-background/50 border-border/50 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all"
                     placeholder="Your full name"
                   />
-                  {errors.name && <p className="text-destructive text-sm mt-1">{errors.name}</p>}
-                </div>
+                  <ValidationError prefix="Name" field="name" errors={state.errors} />
+                </motion.div>
 
-                <div>
+                {/* Email Field */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                >
                   <label htmlFor="email" className="block text-sm font-medium mb-2">
                     Email *
                   </label>
                   <Input
                     id="email"
+                    name="email"
                     type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="rounded-xl"
+                    required
+                    className="rounded-xl h-11 md:h-12 bg-background/50 border-border/50 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all"
                     placeholder="your.email@example.com"
                   />
-                  {errors.email && <p className="text-destructive text-sm mt-1">{errors.email}</p>}
-                </div>
+                  <ValidationError prefix="Email" field="email" errors={state.errors} />
+                </motion.div>
 
-                <div>
+                {/* Phone Field - Now Required */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                >
                   <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                    Phone (Optional)
+                    Phone *
                   </label>
                   <Input
                     id="phone"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="rounded-xl"
-                    placeholder="+1 (555) 123-4567"
+                    name="phone"
+                    type="tel"
+                    required
+                    className="rounded-xl h-11 md:h-12 bg-background/50 border-border/50 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all"
+                    placeholder="(555) 000-0000"
                   />
-                </div>
+                  <ValidationError prefix="Phone" field="phone" errors={state.errors} />
+                </motion.div>
 
-                <div>
+                {/* Country Field - New Searchable Dropdown */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <label htmlFor="country" className="block text-sm font-medium mb-2">
+                    Country *
+                  </label>
+                  <input type="hidden" name="country" value={country} required />
+                  <Popover open={open} onOpenChange={setOpen}>
+                    <PopoverTrigger asChild>
+                      <Button
+                        variant="outline"
+                        role="combobox"
+                        aria-expanded={open}
+                        className="w-full text-muted-foreground justify-between rounded-xl h-11 md:h-12 bg-background/50 border-border/50 hover:bg-white hover:text-black"
+                      >
+                        <span className="flex items-center gap-2">
+                          <Globe className="h-4 w-4 text-muted-foreground" />
+                          {country ? countries.find((c) => c.value === country)?.label : "Select country..."}
+                        </span>
+                        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-full p-0" align="start">
+                      <Command>
+                        <CommandInput placeholder="Search country..." />
+                        <CommandList>
+                          <CommandEmpty>No country found.</CommandEmpty>
+                          <CommandGroup>
+                            {countries.map((c) => (
+                              <CommandItem
+                                key={c.value}
+                                value={c.value}
+                                onSelect={(currentValue) => {
+                                  setCountry(currentValue === country ? "" : currentValue)
+                                  setOpen(false)
+                                }}
+                              >
+                                <Check
+                                  className={cn("mr-2 h-4 w-4", country === c.value ? "opacity-100" : "opacity-0")}
+                                />
+                                {c.label}
+                              </CommandItem>
+                            ))}
+                          </CommandGroup>
+                        </CommandList>
+                      </Command>
+                    </PopoverContent>
+                  </Popover>
+                  <ValidationError prefix="Country" field="country" errors={state.errors} />
+                </motion.div>
+
+                {/* Message Field - Now Optional */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 }}
+                >
                   <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Message *
+                    Message (Optional)
                   </label>
                   <Textarea
                     id="message"
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="rounded-xl min-h-[150px]"
+                    name="message"
+                    className="rounded-xl min-h-[120px] md:min-h-[150px] bg-background/50 border-border/50 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all resize-none"
                     placeholder="Tell us about your career goals and how we can help..."
                   />
-                  {errors.message && <p className="text-destructive text-sm mt-1">{errors.message}</p>}
-                </div>
+                  <ValidationError prefix="Message" field="message" errors={state.errors} />
+                </motion.div>
 
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full rounded-full"
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.6 }}
                 >
-                  Send Message
-                </Button>
+                  <Button
+                    type="submit"
+                    size="lg"
+                    disabled={state.submitting}
+                    className="w-full rounded-full h-11 md:h-12 font-medium"
+                  >
+                    {state.submitting ? "Sending..." : "Send Message"}
+                  </Button>
+                </motion.div>
               </form>
-            </div>
+            </motion.div>
 
             {/* Contact Information */}
-            <div className="space-y-8">
-              <div className="bg-card rounded-3xl p-8 shadow-sm border">
-                <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
-                
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
+            <div className="space-y-6 md:space-y-8">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={itemVariants}
+                className="bg-card/40 backdrop-blur-[2px] rounded-md md:rounded-3xl p-6 md:p-8 shadow-sm border relative overflow-hidden"
+              >
+                <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/5 rounded-full blur-2xl" />
+
+                <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 relative">Contact Information</h2>
+
+                <div className="space-y-4 md:space-y-6 relative">
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1 }}
+                    className="flex items-start gap-4"
+                  >
                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
                       <Mail size={24} />
                     </div>
                     <div>
                       <h3 className="font-semibold mb-1">Email</h3>
-                      <a href="mailto:info@nandani.com" className="text-muted-foreground hover:text-primary transition-colors">
-                        info@nandani.com
+                      <a
+                        href="mailto:jaynilrupareliya04@gmail.com"
+                        className="text-sm md:text-base text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        jaynilrupareliya04@gmail.com
                       </a>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className="flex items-start gap-4">
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                    className="flex items-start gap-4"
+                  >
                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
                       <Phone size={24} />
                     </div>
                     <div>
                       <h3 className="font-semibold mb-1">Phone</h3>
-                      <a href="tel:+15551234567" className="text-muted-foreground hover:text-primary transition-colors">
-                        +1 (555) 123-4567
+                      <a
+                        href="tel:+919712483235"
+                        className="text-sm md:text-base text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        +91 9712483235
                       </a>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className="flex items-start gap-4">
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 }}
+                    className="flex items-start gap-4"
+                  >
                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
                       <MessageCircle size={24} />
                     </div>
                     <div>
                       <h3 className="font-semibold mb-1">WhatsApp</h3>
-                      <a 
-                        href="https://wa.me/15551234567" 
+                      <a
+                        href="https://wa.me/919712483235"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
+                        className="text-sm md:text-base text-muted-foreground hover:text-primary transition-colors"
                       >
                         Message us on WhatsApp
                       </a>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-3xl p-8 border-2 border-primary/20">
-                <h3 className="text-xl font-bold mb-4">Schedule a Free Consultation</h3>
-                <p className="text-muted-foreground mb-6">
-                  Not sure where to start? Book a free 30-minute consultation to discuss 
-                  your career goals and learn how we can help.
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={itemVariants}
+                className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-md md:rounded-3xl p-6 md:p-8 border-2 border-primary/20 relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl" />
+
+                <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 relative">Schedule a Free Consultation</h3>
+                <p className="text-sm md:text-base text-muted-foreground mb-4 md:mb-6 relative">
+                  Not sure where to start? Book a free 30-minute consultation to discuss your career goals and learn how
+                  we can help.
                 </p>
-                <Button size="lg" className="rounded-full w-full" asChild>
-                  <a href="mailto:info@nandani.com?subject=Free Consultation Request">
-                    Book Consultation
-                  </a>
+                <Button size="lg" className="rounded-full w-full h-11 md:h-12 relative" asChild>
+                  <a href="mailto:jaynilrupareliya04@gmail.com?subject=Free Consultation Request">Book Consultation</a>
                 </Button>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -211,7 +427,7 @@ const Contact = () => {
 
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact

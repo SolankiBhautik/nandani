@@ -65,7 +65,7 @@ const plans = [
 
 const Pricing = () => {
   return (
-    <section className="py-20 bg-secondary">
+    <section className="py-1- md:py-20 bg-secondary mx-4 rounded-2xl border">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
@@ -80,11 +80,10 @@ const Pricing = () => {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`relative bg-card rounded-3xl p-8 shadow-sm ${
-                plan.highlighted
-                  ? "ring-2 ring-primary shadow-xl scale-105 bg-foreground text-white"
-                  : ""
-              }`}
+              className={`relative bg-card rounded-3xl p-8 shadow-sm ${plan.highlighted
+                ? "ring-2 ring-primary shadow-xl scale-105 bg-foreground text-white"
+                : ""
+                }`}
             >
               {plan.badge && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm font-semibold">
@@ -123,11 +122,10 @@ const Pricing = () => {
               </ul>
 
               <Button
-                className={`w-full rounded-full ${
-                  plan.highlighted
-                    ? "bg-primary hover:bg-primary/90 text-white"
-                    : ""
-                }`}
+                className={`w-full rounded-full ${plan.highlighted
+                  ? "bg-primary hover:bg-primary/90 text-white"
+                  : ""
+                  }`}
                 variant={plan.variant}
                 size="lg"
                 asChild

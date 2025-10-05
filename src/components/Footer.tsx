@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Mail, Phone } from "lucide-react";
 import { servicesList } from "@/lib/servicesData";
+import logo from "@/assets/footer-logo.png"
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,7 +11,9 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
           <div className="col-span-2 md:col-span-1">
-            <h3 className="text-2xl font-bold text-primary mb-4">Nandani</h3>
+            <NavLink to="/" className="mb-4 block">
+              <img src={logo} className="h-10" />
+            </NavLink>
             <p className="text-gray-300 text-sm">
               Empowering international students and professionals to achieve
               their career dreams in the United States.
@@ -77,19 +80,19 @@ const Footer = () => {
               <li className="flex items-center justify-center md:justify-start gap-2 text-gray-300">
                 <Mail className="h-4 w-4 text-primary" />
                 <a
-                  href="mailto:info@nandani.com"
+                  href="mailto:jaynilrupareliya04@gmail.com"
                   className="hover:text-primary transition-colors"
                 >
-                  info@nandani.com
+                  jaynilrupareliya04@gmail.com
                 </a>
               </li>
               <li className="flex items-center justify-center md:justify-start gap-2 text-gray-300">
                 <Phone className="h-4 w-4 text-primary" />
                 <a
-                  href="tel:+15551234567"
+                  href="tel:+919712483235"
                   className="hover:text-primary transition-colors"
                 >
-                  +1 (555) 123-4567
+                  +91 9712483235
                 </a>
               </li>
             </ul>
