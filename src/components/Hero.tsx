@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-image.jpg";
 import { ArrowRight } from "lucide-react";
 import { BackgroundBeams } from "./ui/shadcn-io/background-beams";
-import logo from "@/assets/nav_logo.png"
+import logo from "@/assets/nav_logo.png";
 
 const Hero = () => {
   return (
@@ -13,14 +13,15 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="space-y-4">
-              <img src={logo} className="md:hidden mb-8" />
+              <img src={logo} className="md:hidden mb-8" alt="site logo" />
               <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
-                Launch Your{" "}
-                <span className="text-primary">Career</span> in the US
+                Launch Your <span className="text-primary">Career</span> in the
+                US
               </h1>
               <p className="text-lg lg:text-xl text-muted-foreground max-w-xl">
-                Expert job placement and training services for international students and professionals.
-                Get the support you need to succeed in your career journey.
+                Expert job placement and training services for international
+                students and professionals. Get the support you need to succeed
+                in your career journey.
               </p>
             </div>
 
@@ -48,15 +49,21 @@ const Hero = () => {
             <div className="flex gap-8 pt-4">
               <div>
                 <div className="text-3xl font-bold text-primary">500+</div>
-                <div className="text-sm text-muted-foreground">Successful Placements</div>
+                <div className="text-sm text-muted-foreground">
+                  Successful Placements
+                </div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-primary">95%</div>
-                <div className="text-sm text-muted-foreground">Success Rate</div>
+                <div className="text-sm text-muted-foreground">
+                  Success Rate
+                </div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-primary">50+</div>
-                <div className="text-sm text-muted-foreground">Partner Companies</div>
+                <div className="text-sm text-muted-foreground">
+                  Partner Companies
+                </div>
               </div>
             </div>
           </div>
@@ -77,7 +84,9 @@ const Hero = () => {
                 </div>
                 <div>
                   <div className="font-semibold">Success Stories</div>
-                  <div className="text-sm text-muted-foreground">Join 500+ professionals</div>
+                  <div className="text-sm text-muted-foreground">
+                    Join 500+ professionals
+                  </div>
                 </div>
               </div>
             </div>

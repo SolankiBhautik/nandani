@@ -1,41 +1,85 @@
-import Navbar from "@/components/Navbar"
-import Footer from "@/components/Footer"
-import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
-import { motion } from "framer-motion"
-import servicesList from "@/lib/servicesData"
-import { Link } from "react-router-dom"
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import servicesList from "@/lib/servicesData";
+import { Link } from "react-router-dom";
 
 const abstractShapes = [
   // Circle pattern
-  <svg key="circle" className="absolute -top-4 -right-4 w-32 h-32 opacity-5" viewBox="0 0 100 100">
+  <svg
+    key="circle"
+    className="absolute -top-4 -right-4 w-32 h-32 opacity-5"
+    viewBox="0 0 100 100"
+  >
     <circle cx="50" cy="50" r="40" fill="currentColor" />
   </svg>,
   // Triangle pattern
-  <svg key="triangle" className="absolute -bottom-6 -left-6 w-36 h-36 opacity-5" viewBox="0 0 100 100">
+  <svg
+    key="triangle"
+    className="absolute -bottom-6 -left-6 w-36 h-36 opacity-5"
+    viewBox="0 0 100 100"
+  >
     <polygon points="50,10 90,90 10,90" fill="currentColor" />
   </svg>,
   // Square pattern
-  <svg key="square" className="absolute top-1/2 -right-8 w-28 h-28 opacity-5 rotate-45" viewBox="0 0 100 100">
+  <svg
+    key="square"
+    className="absolute top-1/2 -right-8 w-28 h-28 opacity-5 rotate-45"
+    viewBox="0 0 100 100"
+  >
     <rect x="20" y="20" width="60" height="60" fill="currentColor" />
   </svg>,
   // Wave pattern
-  <svg key="wave" className="absolute -bottom-4 -right-4 w-40 h-40 opacity-5" viewBox="0 0 100 100">
-    <path d="M0,50 Q25,30 50,50 T100,50 L100,100 L0,100 Z" fill="currentColor" />
+  <svg
+    key="wave"
+    className="absolute -bottom-4 -right-4 w-40 h-40 opacity-5"
+    viewBox="0 0 100 100"
+  >
+    <path
+      d="M0,50 Q25,30 50,50 T100,50 L100,100 L0,100 Z"
+      fill="currentColor"
+    />
   </svg>,
   // Hexagon pattern
-  <svg key="hexagon" className="absolute -top-6 -left-6 w-32 h-32 opacity-5" viewBox="0 0 100 100">
-    <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" fill="currentColor" />
+  <svg
+    key="hexagon"
+    className="absolute -top-6 -left-6 w-32 h-32 opacity-5"
+    viewBox="0 0 100 100"
+  >
+    <polygon
+      points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5"
+      fill="currentColor"
+    />
   </svg>,
   // Star pattern
-  <svg key="star" className="absolute top-1/3 -left-8 w-36 h-36 opacity-5 rotate-12" viewBox="0 0 100 100">
-    <polygon points="50,10 61,40 92,40 67,60 78,90 50,70 22,90 33,60 8,40 39,40" fill="currentColor" />
+  <svg
+    key="star"
+    className="absolute top-1/3 -left-8 w-36 h-36 opacity-5 rotate-12"
+    viewBox="0 0 100 100"
+  >
+    <polygon
+      points="50,10 61,40 92,40 67,60 78,90 50,70 22,90 33,60 8,40 39,40"
+      fill="currentColor"
+    />
   </svg>,
-]
+];
 
 const Services = () => {
   return (
     <div className="min-h-screen relative">
+      <SEO
+        title="Services"
+        description="Explore Nandani's career services for international students and professionals: resume optimization, interview prep, job search strategy, and placements."
+        canonical="/services"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Services - Nandani",
+        }}
+      />
       <div className="fixed inset-0 -z-10 bg-background">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         <div className="absolute inset-0 bg-gradient-to-bl from-primary/5 via-transparent to-accent/5"></div>
@@ -56,8 +100,9 @@ const Services = () => {
               Our <span className="text-primary">Services</span>
             </h1>
             <p className="text-base md:text-xl text-muted-foreground">
-              Comprehensive career services designed specifically for international students and professionals
-              navigating the US job market
+              Comprehensive career services designed specifically for
+              international students and professionals navigating the US job
+              market
             </p>
           </motion.div>
 
@@ -68,7 +113,11 @@ const Services = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: index * 0.1, duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                transition={{
+                  delay: index * 0.1,
+                  duration: 0.5,
+                  ease: [0.4, 0, 0.2, 1],
+                }}
                 className="group"
               >
                 <Link
@@ -92,7 +141,9 @@ const Services = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:via-transparent group-hover:to-accent/5 transition-all duration-500 rounded-md md:rounded-3xl"></div>
 
                   <div className="relative z-10">
-                    <h2 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 pr-12 md:pr-16">{service.title}</h2>
+                    <h2 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 pr-12 md:pr-16">
+                      {service.title}
+                    </h2>
                     <p className="text-sm md:text-base text-muted-foreground mb-4 md:mb-6 leading-relaxed">
                       {service.description}
                     </p>
@@ -104,10 +155,15 @@ const Services = () => {
                           initial={{ opacity: 0, x: -10 }}
                           whileInView={{ opacity: 1, x: 0 }}
                           viewport={{ once: true }}
-                          transition={{ delay: index * 0.1 + idx * 0.05, duration: 0.3 }}
+                          transition={{
+                            delay: index * 0.1 + idx * 0.05,
+                            duration: 0.3,
+                          }}
                           className="flex items-start gap-2 text-xs md:text-sm"
                         >
-                          <span className="text-primary mt-1 flex-shrink-0 font-bold">✓</span>
+                          <span className="text-primary mt-1 flex-shrink-0 font-bold">
+                            ✓
+                          </span>
                           <span className="text-muted-foreground group-hover:text-foreground transition-colors">
                             {feature}
                           </span>
@@ -121,7 +177,10 @@ const Services = () => {
                       asChild
                     >
                       <div className="flex items-center justify-center">
-                        Learn More
+                        <span className="sr-only">
+                          Learn more about {service.title}
+                        </span>
+                        <span aria-hidden>Learn More</span>
                         <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                       </div>
                     </Button>
@@ -138,7 +197,9 @@ const Services = () => {
             transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
             className="text-center mt-12 md:mt-16"
           >
-            <p className="text-base md:text-lg mb-4 md:mb-6">Not sure which service is right for you?</p>
+            <p className="text-base md:text-lg mb-4 md:mb-6">
+              Not sure which service is right for you?
+            </p>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button size="lg" className="rounded-full px-6 md:px-8" asChild>
                 <Link to="/contact">Schedule a Free Consultation</Link>
@@ -150,7 +211,7 @@ const Services = () => {
 
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Services
+export default Services;

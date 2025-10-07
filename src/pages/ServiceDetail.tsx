@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,22 +6,35 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Check, Star, TrendingUp, Users, Award, ChevronRight } from "lucide-react"
-import { servicesMap } from "@/lib/servicesData"
-import { motion } from "framer-motion"
-import Navbar from "@/components/Navbar"
-import Footer from "@/components/Footer"
-import { Link, useParams } from "react-router-dom"
+} from "@/components/ui/breadcrumb";
+import {
+  Check,
+  Star,
+  TrendingUp,
+  Users,
+  Award,
+  ChevronRight,
+} from "lucide-react";
+import { servicesMap } from "@/lib/servicesData";
+import { motion } from "framer-motion";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { Link, useParams } from "react-router-dom";
+import SEO from "@/components/SEO";
 
 const ServiceDetail = () => {
-  const params = useParams()
-  const serviceId = params?.serviceId as string
-  const service = serviceId ? (servicesMap[serviceId] ?? null) : null
+  const params = useParams();
+  const serviceId = params?.serviceId as string;
+  const service = serviceId ? servicesMap[serviceId] ?? null : null;
 
   if (!service) {
     return (
       <div className="min-h-screen flex items-center justify-center">
+        <SEO
+          title="Service Not Found"
+          description="Requested service not found"
+          canonical="/services"
+        />
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Service not found</h1>
           <Button asChild>
@@ -29,13 +42,28 @@ const ServiceDetail = () => {
           </Button>
         </div>
       </div>
-    )
+    );
   }
 
-  const ServiceIcon = service.icon
+  const ServiceIcon = service.icon;
 
   return (
     <div className="min-h-screen relative">
+      <SEO
+        title={service.title}
+        description={service.description}
+        canonical={`/services/${serviceId}`}
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: service.title,
+          description: service.description,
+          provider: {
+            "@type": "Organization",
+            name: "Nandani",
+          },
+        }}
+      />
       {/* Animated Background */}
       <div className="fixed inset-0 -z-10 bg-background">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
@@ -67,7 +95,9 @@ const ServiceDetail = () => {
                   <ChevronRight className="h-4 w-4" />
                 </BreadcrumbSeparator>
                 <BreadcrumbItem>
-                  <BreadcrumbPage className="text-primary">{service.title}</BreadcrumbPage>
+                  <BreadcrumbPage className="text-primary">
+                    {service.title}
+                  </BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -93,7 +123,9 @@ const ServiceDetail = () => {
                 <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-3">
                   {service.title}
                 </h1>
-                <p className="md:text-xl text-muted-foreground">{service.description}</p>
+                <p className="md:text-xl text-muted-foreground">
+                  {service.description}
+                </p>
               </div>
             </div>
 
@@ -103,7 +135,11 @@ const ServiceDetail = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.1, duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                transition={{
+                  delay: 0.1,
+                  duration: 0.5,
+                  ease: [0.4, 0, 0.2, 1],
+                }}
                 whileHover={{ y: -4 }}
                 className="bg-card/10 backdrop-blur-[2px] rounded-md md:rounded-2xl p-2 md:p-4 border border-border/50 text-center"
               >
@@ -115,7 +151,11 @@ const ServiceDetail = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                transition={{
+                  delay: 0.2,
+                  duration: 0.5,
+                  ease: [0.4, 0, 0.2, 1],
+                }}
                 whileHover={{ y: -4 }}
                 className="bg-card/10 backdrop-blur-[2px] rounded-md md:rounded-2xl p-2 md:p-4 border border-border/50 text-center"
               >
@@ -127,7 +167,11 @@ const ServiceDetail = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.3, duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                transition={{
+                  delay: 0.3,
+                  duration: 0.5,
+                  ease: [0.4, 0, 0.2, 1],
+                }}
                 whileHover={{ y: -4 }}
                 className="bg-card/10 backdrop-blur-[2px] rounded-md md:rounded-2xl p-2 md:p-4 border border-border/50 text-center"
               >
@@ -152,8 +196,12 @@ const ServiceDetail = () => {
 
             {/* Overview */}
             <div className="relative mb-6 md:mb-12">
-              <h2 className="text-xl md:text-3xl font-bold mb-2 md:mb-4">Overview</h2>
-              <p className="text-sm md:text-lg text-muted-foreground leading-relaxed">{service.fullDescription}</p>
+              <h2 className="text-xl md:text-3xl font-bold mb-2 md:mb-4">
+                Overview
+              </h2>
+              <p className="text-sm md:text-lg text-muted-foreground leading-relaxed">
+                {service.fullDescription}
+              </p>
             </div>
 
             {/* Divider */}
@@ -170,7 +218,9 @@ const ServiceDetail = () => {
 
             {/* Benefits */}
             <div className="relative mb-6 md:mb-12">
-              <h2 className="text-xl md:text-3xl font-bold mb-4 md:mb-6 flex items-center gap-3">What You Get</h2>
+              <h2 className="text-xl md:text-3xl font-bold mb-4 md:mb-6 flex items-center gap-3">
+                What You Get
+              </h2>
               <ul className="grid md:grid-cols-2 gap-4">
                 {service.benefits.map((benefit, index) => (
                   <motion.li
@@ -178,7 +228,11 @@ const ServiceDetail = () => {
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.1, duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                    transition={{
+                      delay: index * 0.1,
+                      duration: 0.5,
+                      ease: [0.4, 0, 0.2, 1],
+                    }}
                     className="flex items-start gap-3 group"
                   >
                     <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-primary/20 transition-colors">
@@ -204,7 +258,9 @@ const ServiceDetail = () => {
 
             {/* Process */}
             <div className="relative">
-              <h2 className="text-xl md:text-3xl font-bold mb-4 md:mb-8">Our Process</h2>
+              <h2 className="text-xl md:text-3xl font-bold mb-4 md:mb-8">
+                Our Process
+              </h2>
               <ol className="space-y-6">
                 {service.process.map((step, index) => (
                   <motion.li
@@ -212,7 +268,11 @@ const ServiceDetail = () => {
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.1, duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                    transition={{
+                      delay: index * 0.1,
+                      duration: 0.5,
+                      ease: [0.4, 0, 0.2, 1],
+                    }}
                     className="flex gap-4 group"
                   >
                     <div className="relative">
@@ -248,11 +308,22 @@ const ServiceDetail = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent"></div>
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 relative">
                 <div>
-                  <h3 className="text-2xl md:text-3xl font-bold mb-2">Ready to Get Started?</h3>
-                  <p className="text-base md:text-lg text-muted-foreground">{service.pricing}</p>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-2">
+                    Ready to Get Started?
+                  </h3>
+                  <p className="text-base md:text-lg text-muted-foreground">
+                    {service.pricing}
+                  </p>
                 </div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button size="lg" className="rounded-full px-8 shadow-lg hover:shadow-xl transition-shadow" asChild>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button
+                    size="lg"
+                    className="rounded-full px-8 shadow-lg hover:shadow-xl transition-shadow"
+                    asChild
+                  >
                     <Link to="/contact">Schedule Consultation</Link>
                   </Button>
                 </motion.div>
@@ -264,7 +335,7 @@ const ServiceDetail = () => {
 
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default ServiceDetail
+export default ServiceDetail;

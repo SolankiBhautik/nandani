@@ -158,7 +158,8 @@ export function StickyServiceCard({
               to={`/services/${service.id}`}
               className=" flex gap-1 justify-center items-center"
             >
-              Learn more
+              <span className="sr-only">Learn more about {service.title}</span>
+              <span aria-hidden>Learn more</span>
               <ChevronRight className="size-6" />
             </Link>
           </div>

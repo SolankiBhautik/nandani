@@ -1,15 +1,34 @@
-import { useState } from "react"
-import { useForm, ValidationError } from "@formspree/react"
-import Navbar from "@/components/Navbar"
-import Footer from "@/components/Footer"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Mail, Phone, MessageCircle, Check, ChevronsUpDown, Globe } from "lucide-react"
-import { motion } from "framer-motion"
-import { cn } from "@/lib/utils"
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Mail,
+  Phone,
+  MessageCircle,
+  Check,
+  ChevronsUpDown,
+  Globe,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 // Popular countries list
 const countries = [
@@ -33,12 +52,12 @@ const countries = [
   { value: "nz", label: "New Zealand" },
   { value: "za", label: "South Africa" },
   { value: "other", label: "Other" },
-]
+];
 
 const Contact = () => {
-  const [state, handleSubmit] = useForm("xrbyllkz")
-  const [open, setOpen] = useState(false)
-  const [country, setCountry] = useState("")
+  const [state, handleSubmit] = useForm("xrbyllkz");
+  const [open, setOpen] = useState(false);
+  const [country, setCountry] = useState("");
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -49,7 +68,7 @@ const Contact = () => {
         delayChildren: 0.1,
       },
     },
-  } as const
+  } as const;
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -61,11 +80,21 @@ const Contact = () => {
         ease: "easeOut",
       },
     },
-  } as const
+  } as const;
 
   if (state.succeeded) {
     return (
       <div className="min-h-screen">
+        <SEO
+          title="Contact"
+          description="Contact Nandani to schedule a free consultation about career placement and visa guidance for international professionals."
+          canonical="/contact"
+          structuredData={{
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            name: "Contact - Nandani",
+          }}
+        />
         <Navbar />
 
         {/* Background Pattern */}
@@ -94,9 +123,12 @@ const Contact = () => {
               <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
                 <Check className="w-10 h-10 text-primary" />
               </div>
-              <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">Thank You!</h1>
+              <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">
+                Thank You!
+              </h1>
               <p className="text-base md:text-xl text-muted-foreground mb-6 md:mb-8">
-                Your message has been sent successfully. We'll get back to you as soon as possible.
+                Your message has been sent successfully. We'll get back to you
+                as soon as possible.
               </p>
               <Button size="lg" className="rounded-full" asChild>
                 <a href="/">Back to Home</a>
@@ -107,7 +139,7 @@ const Contact = () => {
 
         <Footer />
       </div>
-    )
+    );
   }
 
   return (
@@ -145,10 +177,16 @@ const Contact = () => {
             variants={containerVariants}
             className="max-w-3xl mx-auto text-center mb-8 md:mb-16"
           >
-            <motion.h1 variants={itemVariants} className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6">
+            <motion.h1
+              variants={itemVariants}
+              className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6"
+            >
               Get In <span className="text-primary">Touch</span>
             </motion.h1>
-            <motion.p variants={itemVariants} className="text-base md:text-xl text-muted-foreground">
+            <motion.p
+              variants={itemVariants}
+              className="text-base md:text-xl text-muted-foreground"
+            >
               Ready to take the next step in your career? We're here to help.
             </motion.p>
           </motion.div>
@@ -164,9 +202,14 @@ const Contact = () => {
             >
               <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl" />
 
-              <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 relative">Send Us a Message</h2>
+              <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 relative">
+                Send Us a Message
+              </h2>
 
-              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6 relative">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-4 md:space-y-6 relative"
+              >
                 {/* Name Field */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -174,7 +217,10 @@ const Contact = () => {
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 }}
                 >
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Name *
                   </label>
                   <Input
@@ -184,7 +230,11 @@ const Contact = () => {
                     className="rounded-xl h-11 md:h-12 bg-background/50 border-border/50 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all"
                     placeholder="Your full name"
                   />
-                  <ValidationError prefix="Name" field="name" errors={state.errors} />
+                  <ValidationError
+                    prefix="Name"
+                    field="name"
+                    errors={state.errors}
+                  />
                 </motion.div>
 
                 {/* Email Field */}
@@ -194,7 +244,10 @@ const Contact = () => {
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 }}
                 >
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Email *
                   </label>
                   <Input
@@ -205,7 +258,11 @@ const Contact = () => {
                     className="rounded-xl h-11 md:h-12 bg-background/50 border-border/50 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all"
                     placeholder="your.email@example.com"
                   />
-                  <ValidationError prefix="Email" field="email" errors={state.errors} />
+                  <ValidationError
+                    prefix="Email"
+                    field="email"
+                    errors={state.errors}
+                  />
                 </motion.div>
 
                 {/* Phone Field - Now Required */}
@@ -215,7 +272,10 @@ const Contact = () => {
                   viewport={{ once: true }}
                   transition={{ delay: 0.3 }}
                 >
-                  <label htmlFor="phone" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="phone"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Phone *
                   </label>
                   <Input
@@ -226,7 +286,11 @@ const Contact = () => {
                     className="rounded-xl h-11 md:h-12 bg-background/50 border-border/50 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all"
                     placeholder="(555) 000-0000"
                   />
-                  <ValidationError prefix="Phone" field="phone" errors={state.errors} />
+                  <ValidationError
+                    prefix="Phone"
+                    field="phone"
+                    errors={state.errors}
+                  />
                 </motion.div>
 
                 {/* Country Field - New Searchable Dropdown */}
@@ -236,10 +300,18 @@ const Contact = () => {
                   viewport={{ once: true }}
                   transition={{ delay: 0.4 }}
                 >
-                  <label htmlFor="country" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="country"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Country *
                   </label>
-                  <input type="hidden" name="country" value={country} required />
+                  <input
+                    type="hidden"
+                    name="country"
+                    value={country}
+                    required
+                  />
                   <Popover open={open} onOpenChange={setOpen}>
                     <PopoverTrigger asChild>
                       <Button
@@ -250,7 +322,9 @@ const Contact = () => {
                       >
                         <span className="flex items-center gap-2">
                           <Globe className="h-4 w-4 text-muted-foreground" />
-                          {country ? countries.find((c) => c.value === country)?.label : "Select country..."}
+                          {country
+                            ? countries.find((c) => c.value === country)?.label
+                            : "Select country..."}
                         </span>
                         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                       </Button>
@@ -266,12 +340,19 @@ const Contact = () => {
                                 key={c.value}
                                 value={c.value}
                                 onSelect={(currentValue) => {
-                                  setCountry(currentValue === country ? "" : currentValue)
-                                  setOpen(false)
+                                  setCountry(
+                                    currentValue === country ? "" : currentValue
+                                  );
+                                  setOpen(false);
                                 }}
                               >
                                 <Check
-                                  className={cn("mr-2 h-4 w-4", country === c.value ? "opacity-100" : "opacity-0")}
+                                  className={cn(
+                                    "mr-2 h-4 w-4",
+                                    country === c.value
+                                      ? "opacity-100"
+                                      : "opacity-0"
+                                  )}
                                 />
                                 {c.label}
                               </CommandItem>
@@ -281,7 +362,11 @@ const Contact = () => {
                       </Command>
                     </PopoverContent>
                   </Popover>
-                  <ValidationError prefix="Country" field="country" errors={state.errors} />
+                  <ValidationError
+                    prefix="Country"
+                    field="country"
+                    errors={state.errors}
+                  />
                 </motion.div>
 
                 {/* Message Field - Now Optional */}
@@ -291,7 +376,10 @@ const Contact = () => {
                   viewport={{ once: true }}
                   transition={{ delay: 0.5 }}
                 >
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Message (Optional)
                   </label>
                   <Textarea
@@ -300,7 +388,11 @@ const Contact = () => {
                     className="rounded-xl min-h-[120px] md:min-h-[150px] bg-background/50 border-border/50 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all resize-none"
                     placeholder="Tell us about your career goals and how we can help..."
                   />
-                  <ValidationError prefix="Message" field="message" errors={state.errors} />
+                  <ValidationError
+                    prefix="Message"
+                    field="message"
+                    errors={state.errors}
+                  />
                 </motion.div>
 
                 <motion.div
@@ -332,7 +424,9 @@ const Contact = () => {
               >
                 <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/5 rounded-full blur-2xl" />
 
-                <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 relative">Contact Information</h2>
+                <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 relative">
+                  Contact Information
+                </h2>
 
                 <div className="space-y-4 md:space-y-6 relative">
                   <motion.div
@@ -411,13 +505,21 @@ const Contact = () => {
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl" />
 
-                <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 relative">Schedule a Free Consultation</h3>
+                <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 relative">
+                  Schedule a Free Consultation
+                </h3>
                 <p className="text-sm md:text-base text-muted-foreground mb-4 md:mb-6 relative">
-                  Not sure where to start? Book a free 30-minute consultation to discuss your career goals and learn how
-                  we can help.
+                  Not sure where to start? Book a free 30-minute consultation to
+                  discuss your career goals and learn how we can help.
                 </p>
-                <Button size="lg" className="rounded-full w-full h-11 md:h-12 relative" asChild>
-                  <a href="mailto:jaynilrupareliya04@gmail.com?subject=Free Consultation Request">Book Consultation</a>
+                <Button
+                  size="lg"
+                  className="rounded-full w-full h-11 md:h-12 relative"
+                  asChild
+                >
+                  <a href="mailto:jaynilrupareliya04@gmail.com?subject=Free Consultation Request">
+                    Book Consultation
+                  </a>
                 </Button>
               </motion.div>
             </div>
@@ -427,7 +529,7 @@ const Contact = () => {
 
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

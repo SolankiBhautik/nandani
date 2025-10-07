@@ -14,8 +14,9 @@ const CTA = () => {
                   Ready to Start Your Career Journey?
                 </h2>
                 <p className="text-lg text-white/90">
-                  Join hundreds of international professionals who have successfully
-                  launched their careers in the US with our expert guidance.
+                  Join hundreds of international professionals who have
+                  successfully launched their careers in the US with our expert
+                  guidance.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button
@@ -35,7 +36,7 @@ const CTA = () => {
                     className="rounded-full text-lg px-8 border-white text-black hover:bg-white/10"
                     asChild
                   >
-                    <Link to="/services">Learn More</Link>
+                    <Link to="/services">Explore Our Services</Link>
                   </Button>
                 </div>
               </div>
@@ -57,7 +58,9 @@ const CTA = () => {
                       <div className="w-8 h-8 rounded-full text-white flex items-center justify-center text-xl">
                         ✓
                       </div>
-                      <span className="text-white">Free initial consultation</span>
+                      <span className="text-white">
+                        Free initial consultation
+                      </span>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-full text-white flex items-center justify-center text-xl">
@@ -69,7 +72,9 @@ const CTA = () => {
                       <div className="w-8 h-8 rounded-full text-white flex items-center justify-center text-xl">
                         ✓
                       </div>
-                      <span className="text-white">Proven success track record</span>
+                      <span className="text-white">
+                        Proven success track record
+                      </span>
                     </div>
                   </div>
                 </div>

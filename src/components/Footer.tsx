@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { Mail, Phone } from "lucide-react";
 import { servicesList } from "@/lib/servicesData";
-import logo from "@/assets/footer-logo.png"
+import logo from "@/assets/footer-logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
           <div className="col-span-2 md:col-span-1">
             <NavLink to="/" className="mb-4 block">
-              <img src={logo} className="h-10" />
+              <img src={logo} className="h-10" alt="site logo" />
             </NavLink>
             <p className="text-gray-300 text-sm">
               Empowering international students and professionals to achieve

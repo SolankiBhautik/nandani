@@ -71,3 +71,24 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+## SEO & Performance updates
+
+I added a small SEO helper using `react-helmet-async` at `src/components/SEO.tsx` and wrapped your app with `HelmetProvider` in `src/main.tsx`.
+
+Next steps to finish setup locally:
+
+- Install the new dependency:
+
+  npm install
+
+- Run the dev server:
+
+  npm run dev
+
+Performance & unused code recommendations:
+
+- Code-split pages with React.lazy / Suspense (I added a todo for this).
+- Use PurgeCSS / Tailwind's content config (already present) and ensure unused classes are purged in production builds.
+- Remove unused vendor libraries or lazy-load them (e.g., heavy charting libs if not used on all pages).
+- Run Lighthouse and `vite build` to find unused JS/CSS; consider enabling manual chunking in Vite to split large libs.
