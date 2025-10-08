@@ -97,19 +97,11 @@ const Contact = () => {
         />
         <Navbar />
 
-        {/* Background Pattern */}
-        <div className="fixed inset-0 -z-10">
-          <div
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage: `
-                linear-gradient(45deg, currentColor 1px, transparent 1px),
-                linear-gradient(-45deg, currentColor 1px, transparent 1px)
-              `,
-              backgroundSize: "28px 28px",
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-background/90" />
+
+        {/* fancy Background */}
+        <div className="fixed -inset-96 scale-150 -z-20 bg-background rotate-45 opacity-90">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:28px_28px]"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-transparent to-accent/5"></div>
         </div>
 
         <main className="pt-32 pb-20">
@@ -158,26 +150,11 @@ const Contact = () => {
       />
       <Navbar />
 
-      <div className="fixed inset-0 -z-10 overflow-hidden">
-        {/* Angled Grid Pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `
-              linear-gradient(45deg, currentColor 1px, transparent 1px),
-              linear-gradient(-45deg, currentColor 1px, transparent 1px)
-            `,
-            backgroundSize: "28px 28px",
-          }}
-        />
 
-        {/* Abstract Decorative Shapes */}
-        <div className="absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-10 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/4 w-48 h-48 bg-primary/3 rotate-45 blur-2xl" />
-
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-background/90" />
+      {/* fancy Background */}
+      <div className="fixed -inset-96 scale-150 -z-20 bg-background rotate-45 opacity-90">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:28px_28px]"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-transparent to-accent/5"></div>
       </div>
 
       <main className="pt-24 md:pt-32 pb-12 md:pb-20">
@@ -210,7 +187,7 @@ const Contact = () => {
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
               variants={itemVariants}
-              className="bg-card/40 backdrop-blur-[2px] rounded-md md:rounded-3xl p-6 md:p-8 shadow-sm border relative overflow-hidden"
+              className="bg-card/10 backdrop-blur-[2px] rounded-md md:rounded-3xl p-6 md:p-8 shadow-sm border relative overflow-hidden"
             >
               <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl" />
 
@@ -432,7 +409,7 @@ const Contact = () => {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
                 variants={itemVariants}
-                className="bg-card/40 backdrop-blur-[2px] rounded-md md:rounded-3xl p-6 md:p-8 shadow-sm border relative overflow-hidden"
+                className="bg-card/10 backdrop-blur-[2px] rounded-md md:rounded-3xl p-6 md:p-8 shadow-sm border relative overflow-hidden"
               >
                 <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/5 rounded-full blur-2xl" />
 

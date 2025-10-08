@@ -122,26 +122,10 @@ const About = () => {
       />
       <Navbar />
 
-      {/* Background Pattern - Diagonal Grid */}
-      <div className="fixed inset-0 -z-10">
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `
-              linear-gradient(60deg, hsl(var(--foreground)) 1px, transparent 1px),
-              linear-gradient(-30deg, hsl(var(--foreground)) 1px, transparent 1px)
-            `,
-            backgroundSize: "40px 40px",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5" />
-      </div>
-
-      {/* Abstract Decorative Shapes */}
-      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-40 left-10 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/3 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl" />
+      {/* fancy Background */}
+      <div className="fixed -inset-96 scale-150 -z-20 bg-background rotate-45 opacity-90">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:28px_28px]"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-transparent to-accent/5"></div>
       </div>
 
       <main className="pt-24 md:pt-32 pb-12 md:pb-20">
@@ -277,10 +261,9 @@ const About = () => {
                 className={`
                   relative overflow-hidden bg-card/50 backdrop-blur-[2px] border rounded-2xl md:rounded-3xl p-6 md:p-8
                   hover:shadow-lg transition-all duration-300 group
-                  ${
-                    value.size === "large"
-                      ? "md:col-span-2 lg:col-span-2"
-                      : "md:col-span-1"
+                  ${value.size === "large"
+                    ? "md:col-span-2 lg:col-span-2"
+                    : "md:col-span-1"
                   }
                   ${index === 0 ? "lg:row-span-2" : ""}
                 `}
