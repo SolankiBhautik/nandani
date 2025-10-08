@@ -97,7 +97,7 @@ export function StickyServiceCard({
       <Card className="relative overflow-hidden border hover:border-primary transition-all bg-card text-card-foreground group">
         <Link to={`/services/${service.id}`} className="p-4 sm:p-8 block">
           <div className="mb-5 flex items-center gap-3">
-            <div className="flex size-12 items-center justify-center rounded-xl bg-foreground/5 group-hover:bg-primary/10 text-foreground/50 group-hover:text-primary transition-all">
+            <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10 md:bg-foreground/5 group-hover:bg-primary/10 text-primary md:text-foreground/50 group-hover:text-primary transition-all">
               <Icon className="size-6" />
             </div>
             <div>
@@ -153,7 +153,7 @@ export function StickyServiceCard({
             </div>
           </div>
 
-          <div className="mt-6 flex items-center justify-between underline-offset-4 hover:underline  group-hover:text-primary transition-all">
+          <div className="mt-6 flex items-center justify-between underline-offset-4 hover:underline text-primary md:text-foreground group-hover:text-primary transition-all">
             <Link
               to={`/services/${service.id}`}
               className=" flex gap-1 justify-center items-center"

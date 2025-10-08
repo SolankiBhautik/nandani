@@ -3,7 +3,7 @@ import { StickyServiceCard } from "./StickyServiceCard";
 
 const ServicesPreview = () => {
   return (
-    <section className="py-16 sm:py-24">
+    <section className="mt-8 py-6 lg:py-14">
       <div className="container mx-auto px-4">
         <header className="mb-10 text-center">
           <p className="mb-2 font-semibold text-primary">Services We Offer</p>

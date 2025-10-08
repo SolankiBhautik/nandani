@@ -5,32 +5,36 @@ const steps = [
     number: "1",
     icon: FileText,
     title: "Initial Consultation",
-    description: "Tell us about your background, career goals, and requirements. We'll assess your profile and create a personalized action plan.",
+    description:
+      "Tell us about your background, career goals, and requirements. We'll assess your profile and create a personalized action plan.",
   },
   {
     number: "2",
     icon: Users,
     title: "Skill Development",
-    description: "Get expert training on resume building, interview techniques, and job search strategies tailored to the US market.",
+    description:
+      "Get expert training on resume building, interview techniques, and job search strategies tailored to the US market.",
   },
   {
     number: "3",
     icon: Briefcase,
     title: "Job Matching",
-    description: "We connect you with opportunities that match your skills and career aspirations from our network of partner companies.",
+    description:
+      "We connect you with opportunities that match your skills and career aspirations from our network of partner companies.",
   },
   {
     number: "4",
     icon: TrendingUp,
     title: "Ongoing Support",
-    description: "From offer negotiation to post-hire support, we're with you every step of your career journey in the US.",
+    description:
+      "From offer negotiation to post-hire support, we're with you every step of your career journey in the US.",
   },
 ];
 
 const HowItWorks = () => {
   return (
-    <section className="py-10 md:py-20 bg-secondary mx-4 rounded-2xl border">
-      <div className="container mx-auto px-4">
+    <div className="container">
+      <section className="py-6 lg:py-14 px-4 md:px-8 mx-auto bg-secondary rounded-2xl border mt-20 lg:mt-0">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
             How It <span className="text-primary">Works</span>
@@ -46,16 +50,13 @@ const HowItWorks = () => {
               key={index}
               className="relative bg-card rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow"
             >
+              <div className="absolute z-20 top-0 left-[15px] inverted-corner bg-black [--size:9px] rotate-90">
+                <div className="bg-secondary size-2 -translate-y-full" />
+              </div>
 
-              <div
-                className="absolute z-20 top-0 left-[15px] inverted-corner bg-black [--size:9px] rotate-90"
-              >
-                <div className="bg-secondary size-2 -translate-y-full" /></div>
-
-              <div
-                className="absolute z-20 top-0 left-[88px] inverted-corner bg-black [--size:9px]"
-              >
-                <div className="bg-secondary size-2  -translate-x-full" /></div>
+              <div className="absolute z-20 top-0 left-[88px] inverted-corner bg-black [--size:9px]">
+                <div className="bg-secondary size-2  -translate-x-full" />
+              </div>
 
               <div className="absolute -top-4 left-8 w-12 h-12 rounded-full outline outline-8 outline-secondary bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg">
                 {step.number}
@@ -72,8 +73,8 @@ const HowItWorks = () => {
             </div>
           ))}
         </div>
-      </div>
-    </section >
+      </section>
+    </div>
   );
 };
 

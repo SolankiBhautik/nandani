@@ -19,10 +19,15 @@ const Index = () => {
           "@context": "https://schema.org",
           "@type": "WebSite",
           name: "Nandani",
-          url: "https://your-domain.example/",
+          url: "https://nandaniconsultancy.vercel.app/",
         }}
       />
       <main>
+        {/* fancy Background */}
+        <div className="fixed -inset-96 scale-150 -z-10 bg-background rotate-45 opacity-70">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"></div>
+        </div>
         <Navbar />
         <Hero />
         <HowItWorks />

@@ -144,6 +144,18 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Contact Us"
+        description="Get in touch with Nandani — our team is here to guide international students and professionals through every step of their study abroad and career journey. Reach out for expert help and personalized support."
+        canonical="/contact"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Contact - Nandani",
+          description:
+            "Contact Nandani for personalized guidance and support for studying and working abroad.",
+        }}
+      />
       <Navbar />
 
       <div className="fixed inset-0 -z-10 overflow-hidden">
