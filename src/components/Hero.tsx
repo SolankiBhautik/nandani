@@ -158,7 +158,7 @@ const Hero = () => {
               initial={{ opacity: 0, x: -190 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-              className="absolute -bottom-6 -left-6 bg-card rounded-2xl p-6 shadow-xl border backdrop-blur-md"
+              className="absolute -bottom-6 -left-6 bg-card rounded-2xl p-6 shadow-xl border backdrop-blur-md hidden lg:block"
             >
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
