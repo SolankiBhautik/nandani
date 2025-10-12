@@ -95,6 +95,12 @@ const Footer = () => {
                   +91 9712483235
                 </a>
               </li>
+              <li className="flex items-center justify-center md:justify-start gap-2 text-gray-300">
+                <Phone className="h-4 w-4 text-primary" />
+                <a
+                  className="hover:text-primary transition-colors"
+                >+1 (202) 345-3929</a>
+              </li>
             </ul>
           </div>
         </div>

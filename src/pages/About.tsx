@@ -4,11 +4,9 @@ import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import {
-  ArrowRight,
   Award,
   Target,
   TrendingUp,
-  User,
   Users,
 } from "lucide-react";
 import officeDesk from "@/assets/office-desk.jpg";
@@ -16,39 +14,6 @@ import officeTopDow from "@/assets/office-meating-top-down-view.jpg";
 import teamHands from "@/assets/team-hands.jpg";
 import teamOnTebal from "@/assets/team-onthe-teble.jpg";
 import { Link } from "react-router-dom";
-
-const team = [
-  {
-    name: "Sarah Johnson",
-    role: "Founder & CEO",
-    bio: "Former HR Director with 15+ years of experience in talent acquisition and career development.",
-    gradient: "from-purple-400 to-pink-400",
-  },
-  {
-    name: "Raj Patel",
-    role: "Senior Career Coach",
-    bio: "Immigration specialist and career advisor helping international professionals navigate the US job market.",
-    gradient: "from-blue-400 to-cyan-400",
-  },
-  {
-    name: "Maria Garcia",
-    role: "Resume & Interview Expert",
-    bio: "Certified Professional Resume Writer (CPRW) with expertise in ATS optimization.",
-    gradient: "from-orange-400 to-pink-400",
-  },
-  {
-    name: "David Chen",
-    role: "Tech Industry Advisor",
-    bio: "Former tech recruiter at Fortune 500 companies, specializing in software engineering placements.",
-    gradient: "from-green-400 to-teal-400",
-  },
-  {
-    name: "Lisa Williams",
-    role: "Visa & Immigration Consultant",
-    bio: "Expert in H-1B, OPT, and other work visa processes with 10+ years of experience.",
-    gradient: "from-indigo-400 to-purple-400",
-  },
-];
 
 const values = [
   {
@@ -142,7 +107,7 @@ const About = () => {
             className="max-w-3xl mx-auto text-center mb-8 md:mb-16"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-balance">
-              About <span className="text-primary">Nandani</span>
+              About <span className="text-primary">Our Group</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground text-pretty">
               Empowering international students and professionals to achieve
@@ -309,62 +274,6 @@ const About = () => {
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                     {value.description}
                   </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
-
-        {/* Team Section */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-          className="container mx-auto px-4 mb-16 md:mb-20"
-        >
-          <motion.div
-            variants={itemVariants}
-            className="text-center mb-8 md:mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4">
-              Meet Our Team
-            </h2>
-            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-              Experienced professionals dedicated to your success
-            </p>
-          </motion.div>
-
-          <div className="max-w-4xl mx-auto space-y-4 md:space-y-6">
-            {team.map((member, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="group relative overflow-hidden bg-card/50 backdrop-blur-[2px] border rounded-2xl md:rounded-3xl p-6 md:p-8 hover:shadow-lg transition-all duration-300"
-              >
-                <div className="flex flex-col sm:flex-row gap-4 md:gap-6 items-start sm:items-center">
-                  {/* User Icon with Gradient */}
-                  <div
-                    className={`relative flex-shrink-0 w-20 h-20 md:w-24 md:h-24 rounded-2xl md:rounded-3xl bg-gradient-to-br ${member.gradient} flex items-center justify-center group-hover:scale-105 transition-transform`}
-                  >
-                    <User className="w-10 h-10 md:w-12 md:h-12 text-white" />
-                  </div>
-
-                  {/* Member Info */}
-                  <div className="flex-1">
-                    <h3 className="text-xl md:text-2xl font-bold mb-1">
-                      {member.name}
-                    </h3>
-                    <p className="text-primary text-sm md:text-base font-medium mb-2 md:mb-3">
-                      {member.role}
-                    </p>
-                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                      {member.bio}
-                    </p>
-                  </div>
-
-                  {/* Decorative Arrow */}
-                  <ArrowRight className="hidden sm:block w-5 h-5 md:w-6 md:h-6 text-muted-foreground/30 group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0" />
                 </div>
               </motion.div>
             ))}

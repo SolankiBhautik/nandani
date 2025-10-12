@@ -30,7 +30,7 @@ export const servicesList: Service[] = [
     description:
       "Expertly crafted resumes and cover letters designed for US employers and optimized for ATS systems.",
     fullDescription:
-      "Your resume is often your first introduction to an employer—let’s make it count. Our specialists create resumes that effectively present your achievements and experience while ensuring they’re fully compatible with Applicant Tracking Systems (ATS). We focus on showcasing your international background as a strength and aligning your profile with US market standards.",
+      "Your resume is often your first introduction to an employer—let's make it count. Our specialists create resumes that effectively present your achievements and experience while ensuring they're fully compatible with Applicant Tracking Systems (ATS). We focus on showcasing your international background as a strength and aligning your profile with US market standards.",
     features: [
       "ATS-compliant design and formatting",
       "Tailored cover letter writing",
@@ -55,7 +55,7 @@ export const servicesList: Service[] = [
     pricing: "Starting at $199",
   },
   {
-    id: "interview-training",
+    id: "interview-coaching",
     icon: MessageSquare,
     title: "Interview Coaching",
     description:
@@ -86,130 +86,69 @@ export const servicesList: Service[] = [
     pricing: "Starting at $299",
   },
   {
-    id: "job-search",
+    id: "technical-support",
     icon: Search,
-    title: "Job Search Strategy",
+    title: "Technical Support",
     description:
-      "Comprehensive job search planning, company targeting, and application tracking tools.",
+      "Comprehensive technical interview preparation and skill enhancement for tech roles.",
     fullDescription:
-      "Finding a job in the US requires more than just applying online—it’s about strategy and focus. We help you develop a targeted plan that aligns with your skills, goals, and industry trends, ensuring you apply to the right companies with a structured system to track your progress.",
+      "Landing a technical role requires strong problem-solving skills and the ability to communicate your thought process effectively. Our technical support service provides hands-on coaching for coding interviews, system design discussions, and technical assessments to help you stand out in competitive tech interviews.",
     features: [
-      "Tailored job search plan",
-      "Company and industry research",
-      "Custom application tracker",
-      "Networking and outreach guidance",
-      "Access to hidden job opportunities",
+      "Data structures and algorithms practice",
+      "System design interview preparation",
+      "Mock coding interviews with real-time feedback",
+      "Technical communication skills training",
+      "Platform-specific preparation (LeetCode, HackerRank)",
     ],
     benefits: [
-      "Clarity and structure in your job search",
-      "Company insights and culture-fit assessments",
-      "Practical networking techniques that work",
-      "Access to under-the-radar job opportunities",
-      "Ongoing accountability and progress tracking",
-      "Weekly feedback to refine your approach",
+      "Improved problem-solving speed and accuracy",
+      "Confidence in explaining technical concepts",
+      "Mastery of common interview patterns",
+      "Real-world system design thinking",
+      "Effective whiteboarding and live coding skills",
+      "Personalized study plans based on your target companies",
     ],
     process: [
-      "Career goals and market alignment session",
-      "Development of a strategic job search plan",
-      "Weekly performance and progress check-ins",
-      "Ongoing support until interview stage",
+      "Technical skill assessment and gap analysis",
+      "Customized learning roadmap creation",
+      "Regular practice sessions with expert feedback",
+      "Progress tracking and strategy refinement",
     ],
     pricing: "Starting at $399",
   },
   {
-    id: "salary-negotiation",
+    id: "job-search-strategy",
     icon: DollarSign,
-    title: "Salary Negotiation Coaching",
+    title: "Job Search Strategy & Application Training",
     description:
-      "Guided negotiation support to help you secure the best compensation package possible.",
+      "Learn how to search for jobs efficiently and apply strategically to maximize your chances.",
     fullDescription:
-      "Understanding salary expectations and negotiation culture in the US can be difficult. Our experts provide research-based insights and one-on-one coaching so you can confidently negotiate your salary, benefits, and perks—without underselling your value.",
+      "The job search process can be overwhelming without the right strategy. We teach you proven techniques to identify the best opportunities quickly, optimize your applications for success, and manage your job search efficiently. Learn to work smarter, not harder, with our systematic approach to finding and applying for jobs.",
     features: [
-      "Market salary benchmarking",
-      "Negotiation scripts and strategy prep",
-      "Benefits package evaluation",
-      "Counteroffer response guidance",
-      "Long-term career compensation planning",
+      "Advanced job search techniques and tools",
+      "Application optimization strategies",
+      "Efficient workflow and time management",
+      "Company research and targeting methods",
+      "Application tracking system mastery",
     ],
     benefits: [
-      "Confidence in salary and benefits discussions",
-      "Accurate market rate insights by role and location",
-      "Personalized negotiation playbook",
-      "Effective counteroffer and leverage strategies",
-      "Clarity on total compensation value",
-      "Guidance for long-term earning growth",
+      "Reduced time spent on unqualified opportunities",
+      "Higher application response rates",
+      "Systematic and organized job search approach",
+      "Ability to identify best-fit opportunities quickly",
+      "Confidence in tailoring applications efficiently",
+      "Tools and templates for faster applications",
     ],
     process: [
-      "Detailed review of your job offer",
-      "One-on-one strategy and preparation session",
-      "Customized negotiation script development",
-      "Ongoing advice during the negotiation process",
+      "Job search strategy and goals alignment",
+      "Training on efficient search techniques",
+      "Application optimization workshop",
+      "Ongoing support and progress monitoring",
     ],
-    pricing: "Starting at $249",
-  },
-  {
-    id: "visa-support",
-    icon: Plane,
-    title: "Visa & Sponsorship Guidance",
-    description:
-      "Practical assistance with understanding US visa pathways and employer sponsorship options.",
-    fullDescription:
-      "The US visa system can be complex. While we don’t provide legal advice, we offer practical guidance to help you understand your options, identify companies that sponsor international talent, and prepare your documents and strategy for visa applications.",
-    features: [
-      "Overview of key work visas (H-1B, O-1, L-1, etc.)",
-      "OPT and CPT consulting for students",
-      "Sponsorship-focused job search assistance",
-      "Green card process overview",
-      "Document checklist and preparation tips",
-    ],
-    benefits: [
-      "Clear understanding of visa types and pathways",
-      "Identification of sponsorship-friendly employers",
-      "Step-by-step document preparation support",
-      "Guidance for visa interviews and next steps",
-      "Strategic approach to long-term residency planning",
-      "Ongoing advice throughout your visa process",
-    ],
-    process: [
-      "Visa eligibility and options review",
-      "Personalized visa strategy development",
-      "Company identification and application support",
-      "Continued follow-up and progress guidance",
-    ],
-    pricing: "Starting at $499",
-  },
-  {
-    id: "post-hire",
-    icon: HeartHandshake,
-    title: "Post-Hire Career Support",
-    description:
-      "Personalized guidance to help you adapt, perform, and grow in your new workplace.",
-    fullDescription:
-      "Getting the job is just step one—thriving in it is step two. Our post-hire coaching helps you adjust smoothly to US work culture, strengthen professional relationships, and set yourself up for long-term success and promotion readiness.",
-    features: [
-      "First 90-day integration plan",
-      "Cultural adaptation and communication training",
-      "Performance review preparation",
-      "Career growth roadmap development",
-      "Dedicated mentorship and support",
-    ],
-    benefits: [
-      "Smooth transition into your new role",
-      "Understanding of US workplace norms",
-      "Clear career growth and performance strategies",
-      "Support in handling challenges and feedback",
-      "Mentorship for long-term professional growth",
-      "Confidence and clarity in your first 3–6 months",
-    ],
-    process: [
-      "Initial onboarding and adjustment planning",
-      "Monthly coaching sessions for the first 3 months",
-      "Ongoing support for specific challenges",
-      "Long-term career growth planning and mentoring",
-    ],
-    pricing: "Starting at $599 for 3 months",
+    pricing: "Starting at $349",
   },
 ];
+
 export const servicesMap: Record<string, Service> = servicesList.reduce(
   (acc, s) => {
     acc[s.id] = s;

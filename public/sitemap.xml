@@ -22,23 +22,15 @@
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://nandaniconsultancy.vercel.app/service/interview-training</loc>
+        <loc>https://nandaniconsultancy.vercel.app/service/interview-coaching</loc>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://nandaniconsultancy.vercel.app/service/job-search</loc>
+        <loc>https://nandaniconsultancy.vercel.app/service/technical-support</loc>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://nandaniconsultancy.vercel.app/service/salary-negotiation</loc>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://nandaniconsultancy.vercel.app/service/visa-support</loc>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://nandaniconsultancy.vercel.app/service/post-hire</loc>
+        <loc>https://nandaniconsultancy.vercel.app/service/job-search-strategy</loc>
         <priority>0.6</priority>
     </url>
 </urlset>
