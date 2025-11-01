@@ -80,6 +80,13 @@ const Footer = () => {
               <li className="flex items-center justify-center md:justify-start gap-2 text-gray-300">
                 <Mail className="h-4 w-4 text-primary" />
                 <a
+                  href="mailto:ghorisohil8@gmail.com"
+                  className="hover:text-primary transition-colors"
+                >ghorisohil8@gmail.com</a>
+              </li>
+              <li className="flex items-center justify-center md:justify-start gap-2 text-gray-300">
+                <Mail className="h-4 w-4 text-primary" />
+                <a
                   href="mailto:jaynilrupareliya04@gmail.com"
                   className="hover:text-primary transition-colors"
                 >
@@ -92,14 +99,15 @@ const Footer = () => {
                   href="tel:+919712483235"
                   className="hover:text-primary transition-colors"
                 >
-                  +91 9712483235
+                  +91 97124 83235
                 </a>
               </li>
               <li className="flex items-center justify-center md:justify-start gap-2 text-gray-300">
                 <Phone className="h-4 w-4 text-primary" />
                 <a
+                  href="tel:+919725912265"
                   className="hover:text-primary transition-colors"
-                >+1 (202) 345-3929</a>
+                >+91 97259 12265</a>
               </li>
             </ul>
           </div>

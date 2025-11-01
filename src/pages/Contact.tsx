@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { useForm, ValidationError } from "@formspree/react";
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
@@ -57,7 +57,7 @@ const countries = [
 const Contact = () => {
   const [state, handleSubmit] = useForm("xrbyllkz");
   const [open, setOpen] = useState(false);
-  const [country, setCountry] = useState("");
+  const [country, setCountry] = useState(null);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -196,7 +196,14 @@ const Contact = () => {
               </h2>
 
               <form
-                onSubmit={handleSubmit}
+                onSubmit={(e) => {
+                  if (!country) {
+                    e.preventDefault();
+                    setOpen(true);
+                    return;
+                  }
+                  handleSubmit(e);
+                }}
                 className="space-y-4 md:space-y-6 relative"
               >
                 {/* Name Field */}
@@ -296,10 +303,17 @@ const Contact = () => {
                     Country *
                   </label>
                   <input
-                    type="hidden"
                     name="country"
                     value={country}
                     required
+                    style={{
+                      position: "absolute",
+                      opacity: 0,
+                      pointerEvents: "none",
+                      height: 0,
+                      width: 0,
+                    }}
+                    tabIndex={-1}
                   />
                   <Popover open={open} onOpenChange={setOpen}>
                     <PopoverTrigger asChild>
@@ -443,6 +457,25 @@ const Contact = () => {
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
+                    transition={{ delay: 0.1 }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                      <Mail size={24} />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-1">Email</h3>
+                      <a
+                        href="mailto:ghorisohil8@gmail.com"
+                        className="text-sm md:text-base text-muted-foreground hover:text-primary transition-colors"
+                      >ghorisohil8@gmail.com</a>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
                     className="flex items-start gap-4"
                   >
@@ -457,6 +490,25 @@ const Contact = () => {
                       >
                         +91 9712483235
                       </a>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                      <Phone size={24} />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-1">Phone</h3>
+                      <a
+                        href="tel:+919725912265"
+                        className="text-sm md:text-base text-muted-foreground hover:text-primary transition-colors"
+                      >+91 97259 12265</a>
                     </div>
                   </motion.div>
 
